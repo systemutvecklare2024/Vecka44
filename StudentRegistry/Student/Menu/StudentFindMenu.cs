@@ -11,18 +11,13 @@ namespace StudentRegistry.Student.Menu
         public override void Show()
         {
             PrintHelper.Clear();
-            Console.WriteLine("Enter search phrase, or write q to go back.");
-            Console.Write("Search phrase: ");
-            var searchPhrase = Console.ReadLine();
-            if (string.IsNullOrEmpty(searchPhrase))
+            Console.WriteLine("Enter search phrase");
+            Console.WriteLine("0. Back");
+
+            var searchPhrase = PrintHelper.GetStringInput("Search phrase");
+
+            if (searchPhrase.Equals("0"))
             {
-                Console.WriteLine("Invalid search phrase");
-                PrintHelper.Halt();
-                return;
-            }
-            if (searchPhrase.Equals("q"))
-            {
-                PrintHelper.Halt();
                 App.ChangeMenu(new StudentMainMenu(this));
                 return;
             }
@@ -36,10 +31,19 @@ namespace StudentRegistry.Student.Menu
                 return;
             }
 
+            if (students.Count() == 1)
+            {
+                App.ChangeMenu(new StudentViewMenu(this, students.First()));
+                return;
+            }
+
             StudentPrinter.PrintStudentTable(students);
-            Console.WriteLine("Input id to select student, or q to go back.");
-            Console.Write("Input: ");
-            var id = Console.ReadLine();
+
+            Console.WriteLine("Input id to select student");
+            Console.WriteLine("0. Back");
+            
+            var id = PrintHelper.GetStringInput("Id");
+            
             if (int.TryParse(id, out var result))
             {
                 var student = StudentController.GetStudentById(result);

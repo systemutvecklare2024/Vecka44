@@ -4,96 +4,53 @@ namespace StudentRegistry.Student.Menu
 {
     internal class StudentViewMenu : StudentBaseMenu
     {
+        private const string Back = "0";
         private const string FirstName = "1";
         private const string LastName = "2";
         private const string City = "3";
 
-        private Student student;
+        private Student _student;
 
         public StudentViewMenu(StudentBaseMenu menu, Student student) : base(menu)
         {
-            this.student = student;
+            this._student = student;
         }
 
         public override void Show()
         {
             PrintHelper.Clear();
-            StudentPrinter.PrintStudentInfo(student);
 
-            Console.WriteLine("q to go back");
-            Console.WriteLine("Select option.");
-            Console.Write("Choice: ");
+            StudentPrinter.PrintStudentInfo(_student);
 
-            var response = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(response))
-            {
-                Console.WriteLine("Invalid option.");
-                PrintHelper.Halt();
-                return;
-            }
-            if (response.Equals("q"))
-            {
-                PrintHelper.Halt();
-                App.ChangeMenu(new StudentMainMenu(this));
-                return;
-            }
+            var response = PrintHelper.GetStringInput("Choice");
 
             switch (response)
             {
                 case FirstName:
-                    student.FirstName = ReadNewValue("Firstname");
+                    StudentController.Update(_student, ReadNewValue("Firstname"), StudentField.FirstName);
                     break;
                 case LastName:
-                    student.FirstName = ReadNewValue("Surname");
+                    StudentController.Update(_student, ReadNewValue("Lastname"), StudentField.LastName);
                     break;
                 case City:
-                    student.City = ReadNewValue("City");
+                    StudentController.Update(_student, ReadNewValue("City"), StudentField.City);
                     break;
+                case Back:
+                    App.ChangeMenu(new StudentMainMenu(this));
+                    return;
                 default:
                     return;
             }
-
-            StudentController.Update(student);
-            Console.WriteLine("Student has been updated.");
+            
             PrintHelper.Halt();
-        }
-
-        private void UpdateLastName()
-        {
-            var lname = Console.ReadLine();
-            if (!string.IsNullOrEmpty(lname))
-            {
-                student.LastName = lname;
-                StudentController.Update(student);
-                Console.WriteLine("Surname has been updated.");
-            }
-        }
-
-        private void UpdateCity()
-        {
-            var city = Console.ReadLine();
-            if (!string.IsNullOrEmpty(city))
-            {
-                student.LastName = city;
-                StudentController.Update(student);
-                Console.WriteLine("City has been updated.");
-            }
         }
 
         private string ReadNewValue(string field)
         {
             Console.WriteLine($"Update {field}");
-            while (true)
-            {
-                Console.Write("New value: ");
-                var response = Console.ReadLine();
-                if (!string.IsNullOrEmpty(response))
-                {
-                    // Could add more validation here...
-                    return response;
-                }
-            }
+            var response = PrintHelper.GetStringInput("New value");
+
+            return response;
         }
     }
 }

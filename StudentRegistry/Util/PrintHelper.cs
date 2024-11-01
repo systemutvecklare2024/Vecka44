@@ -14,5 +14,20 @@
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
+
+        public static string GetStringInput(string inputText)
+        {
+            string firstName;
+            while (true)
+            {
+                Console.Write($"{inputText}: ");
+                firstName = Console.ReadLine();
+                if (string.IsNullOrEmpty(firstName)) {
+                    Console.WriteLine("Invalid input, try again.");
+                    continue;
+                }
+                return firstName;
+            }
+        }
     }
 }

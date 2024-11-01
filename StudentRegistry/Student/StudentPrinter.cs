@@ -10,7 +10,9 @@
 
         public static void PrintStudentTable(IEnumerable<Student> students)
         {
+            var spacer = new String('-', 9);
             Console.WriteLine("Students");
+            Console.WriteLine(spacer);
 
             Console.WriteLine(_tableFormat, "Id", "Name", "City");
 
@@ -18,14 +20,19 @@
             {
                 Console.WriteLine(_tableFormat, student.StudentId, $"{student.FirstName} {student.LastName}", student.City);
             }
+            Console.WriteLine(spacer);
         }
 
         public static void PrintStudentInfo(Student student)
         {
-            Console.WriteLine("Student Info");
+            var spacer = new String('-', 17);
+            Console.WriteLine("Edit Student Info");
+            Console.WriteLine(spacer);
             Console.WriteLine($"1. Firstname: {student.FirstName}");
             Console.WriteLine($"2. Lastname: {student.LastName}");
             Console.WriteLine($"3. City: {student.City}");
+            Console.WriteLine($"0. Back");
+            Console.WriteLine(spacer);
         }
     }
 }

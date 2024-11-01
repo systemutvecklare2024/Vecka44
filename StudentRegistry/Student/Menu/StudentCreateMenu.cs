@@ -13,18 +13,14 @@ namespace StudentRegistry.Student.Menu
             PrintHelper.Clear();
 
             Console.WriteLine("Create Student");
-            Console.Write("Firstname: ");
-            var firstName = Console.ReadLine();
-            Console.Write("Lastname: ");
-            var lastName = Console.ReadLine();
-            Console.Write("City: ");
-            var city = Console.ReadLine();
+            var firstName = PrintHelper.GetStringInput("Firstname");
+            var lastName = PrintHelper.GetStringInput("Surname");
+            var city = PrintHelper.GetStringInput("City");
 
-            StudentController.CreateStudent(new StudentDto(firstName, lastName, city));
+            StudentController.CreateStudent(firstName, lastName, city);
 
             App.ChangeMenu(new StudentMainMenu(this));
             PrintHelper.Halt();
-            PrintHelper.Clear();
         }
     }
 }

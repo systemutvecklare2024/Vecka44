@@ -25,7 +25,7 @@ namespace StudentRegistry.Student.Menu
             Console.WriteLine("3. List all students");
             Console.WriteLine("0. Back");
 
-            var response = Console.ReadLine();
+            var response = PrintHelper.GetStringInput("Choice");
 
             if (string.IsNullOrEmpty(response))
             {

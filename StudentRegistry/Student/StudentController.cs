@@ -9,9 +9,9 @@
             _studentRepository = new StudentRepository(context);
         }
 
-        public void CreateStudent(StudentDto studentDto)
+        public void CreateStudent(string firstName, string lastName, string city)
         {
-            Student student = new Student { FirstName = studentDto.FirstName, LastName = studentDto.LastName, City = studentDto.City};
+            Student student = new Student { FirstName = firstName, LastName = lastName, City = city};
             _studentRepository.Add(student);
             _studentRepository.Save();
         }
@@ -31,9 +31,24 @@
             return _studentRepository.GetById(id);
         }
 
-        internal void Update(Student student)
+        internal void Update(Student student, string value, StudentField field)
         {
+            switch (field)
+            {
+                case StudentField.FirstName:
+                    student.FirstName = value;
+                    break;
+                case StudentField.LastName:
+                    student.LastName = value;
+                    break;
+                case StudentField.City:
+                    student.City = value;
+                    break;
+                default:
+                    break;
+            }
             _studentRepository.Update(student);
+            _studentRepository.Save();
         }
     }
 }
