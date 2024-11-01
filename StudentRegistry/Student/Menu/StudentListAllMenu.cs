@@ -4,9 +4,7 @@ namespace StudentRegistry.Student.Menu
 {
     internal class StudentListAllMenu : StudentBaseMenu
     {
-        public StudentListAllMenu(StudentBaseMenu menu) : base(menu)
-        {
-        }
+        public StudentListAllMenu(StudentBaseMenu menu) : base(menu) { }
 
         public override void Show()
         {

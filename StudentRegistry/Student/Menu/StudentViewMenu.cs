@@ -4,6 +4,7 @@ namespace StudentRegistry.Student.Menu
 {
     internal class StudentViewMenu : StudentBaseMenu
     {
+        // Menu alternatives
         private const string Back = "0";
         private const string FirstName = "1";
         private const string LastName = "2";

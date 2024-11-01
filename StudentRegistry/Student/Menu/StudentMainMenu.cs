@@ -4,18 +4,16 @@ namespace StudentRegistry.Student.Menu
 {
     internal class StudentMainMenu : StudentBaseMenu
     {
+
+        // Menu alternatives
         const string CreateStudent = "1";
         const string FindStudent = "2";
         const string ListAllStudents = "3";
         const string Back = "0";
 
-        public StudentMainMenu(App app, StudentController studentController) : base(app, studentController)
-        {
-        }
+        public StudentMainMenu(App app, StudentController studentController) : base(app, studentController) { }
 
-        public StudentMainMenu(StudentBaseMenu menu) : base(menu)
-        {
-        }
+        public StudentMainMenu(StudentBaseMenu menu) : base(menu) { }
 
         public override void Show()
         {

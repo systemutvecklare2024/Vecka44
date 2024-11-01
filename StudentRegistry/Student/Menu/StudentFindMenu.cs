@@ -4,9 +4,7 @@ namespace StudentRegistry.Student.Menu
 {
     internal class StudentFindMenu : StudentBaseMenu
     {
-        public StudentFindMenu(StudentBaseMenu menu) : base(menu)
-        {
-        }
+        public StudentFindMenu(StudentBaseMenu menu) : base(menu) { }
 
         public override void Show()
         {
@@ -41,9 +39,9 @@ namespace StudentRegistry.Student.Menu
 
             Console.WriteLine("Input id to select student");
             Console.WriteLine("0. Back");
-            
+
             var id = PrintHelper.GetStringInput("Id");
-            
+
             if (int.TryParse(id, out var result))
             {
                 var student = StudentController.GetStudentById(result);

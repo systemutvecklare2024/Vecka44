@@ -4,6 +4,7 @@
     {
         public App App { get; set; }
         public StudentController StudentController { get; set; }
+
         public StudentBaseMenu(App app, StudentController studentController)
         {
             App = app;
