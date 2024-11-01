@@ -25,13 +25,8 @@ namespace StudentRegistry.Student
         }
 
         public void Delete(Student student)
-        {
+        { 
             _dbContext.Remove(student);
-        }
-
-        public void Delete(int id)
-        {
-            var student = _dbContext.Students.Find(id);
         }
 
         public void Save()
