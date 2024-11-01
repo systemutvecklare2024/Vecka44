@@ -1,5 +1,4 @@
-﻿using StudentRegistry.Student;
-using StudentRegistry.Util;
+﻿using StudentRegistry.Util;
 
 namespace StudentRegistry.Student.Menu
 {

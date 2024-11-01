@@ -1,6 +1,4 @@
-﻿using StudentRegistry.Student;
-
-namespace StudentRegistry.Student.Menu
+﻿namespace StudentRegistry.Student.Menu
 {
     internal abstract class StudentBaseMenu
     {

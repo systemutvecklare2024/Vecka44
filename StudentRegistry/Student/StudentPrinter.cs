@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace StudentRegistry.Student
+﻿namespace StudentRegistry.Student
 {
     internal class StudentPrinter
     {

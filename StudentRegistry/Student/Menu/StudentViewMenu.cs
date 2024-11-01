@@ -1,5 +1,4 @@
-﻿using StudentRegistry.Student;
-using StudentRegistry.Util;
+﻿using StudentRegistry.Util;
 
 namespace StudentRegistry.Student.Menu
 {
@@ -9,9 +8,9 @@ namespace StudentRegistry.Student.Menu
         private const string LastName = "2";
         private const string City = "3";
 
-        private Student.Student student;
+        private Student student;
 
-        public StudentViewMenu(StudentBaseMenu menu, Student.Student student) : base(menu)
+        public StudentViewMenu(StudentBaseMenu menu, Student student) : base(menu)
         {
             this.student = student;
         }
@@ -20,7 +19,6 @@ namespace StudentRegistry.Student.Menu
         {
             PrintHelper.Clear();
             StudentPrinter.PrintStudentInfo(student);
-
 
             Console.WriteLine("q to go back");
             Console.WriteLine("Select option.");

@@ -20,7 +20,7 @@ namespace StudentRegistry.Student.Menu
             Console.Write("City: ");
             var city = Console.ReadLine();
 
-            StudentController.CreateStudent(new Student.StudentDto(firstName, lastName, city));
+            StudentController.CreateStudent(new StudentDto(firstName, lastName, city));
 
             App.ChangeMenu(new StudentMainMenu(this));
             PrintHelper.Halt();

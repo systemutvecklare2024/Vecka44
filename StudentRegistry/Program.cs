@@ -1,6 +1,4 @@
-﻿using StudentRegistry.Student;
-
-namespace StudentRegistry
+﻿namespace StudentRegistry
 {
     internal class Program
     {
